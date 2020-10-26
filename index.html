@@ -1,0 +1,153 @@
+<html>
+    
+    <head>
+	
+        <title>Actividad 26-10-2020</title>
+	<link href="estilopage.css"  rel="stylesheet" type="text/css">
+	  
+    </head>
+   
+
+    <body>
+	
+      <section>
+	<center><h2><i><FONT SIZE=6 COLOR=3383ff>TODO SOBRE LAS VLAN</FONT></i></h2></center>
+	<center><h2><i><FONT SIZE=4 COLOR=3383ff>Conmutacion y enrutamiento de datos</FONT></i></h2></center>   	
+	  <p><center><img src="img1.jpg" class="img1"></center></p>
+	  <b><i><address class="add">Autor: Angelica Langarica Escobedo</address></i></b>
+	  <b><i><address class="ad">Fecha: 26 de octubre de 2020</address></b></i>
+	  <br>
+	  <b>Definicion</b>
+	  <br>
+	  <p>
+	  Del inglés Virtual LAN (Red de área local y virtual), es un método que permite crear redes 
+	  que lógicamente son independientes, aunque estas se encuentren dentro de una misma red física. 
+	  De esta forma, un usuario podría disponer de varias VLANs dentro de un mismo router o switch. 
+          Podría decirse que cada una de estas redes agrupa los equipos de un determinado segmento de red.
+	  es un segmento lógico más pequeño dentro de una gran red física cableada. Las diferentes estaciones 
+	  se combinan en una solución de red independiente de su ubicación: siempre que estén conectadas entre 
+	  sí en la misma LAN, es posible combinarlas mediante una VLAN. No supone ningún problema que la LAN 
+	  abarque varios switches.  
+	  </p>
+	  <br>
+	  <b>Tipos de VLAN</b>
+	  <br>
+	  <p id="pcolor">VLAN de datos</p>
+	  <p>
+          Una VLAN de datos es una VLAN configurada para transportar tráfico generado por usuarios. Una VLAN que 
+          transporta tráfico de administración o de voz no sería una VLAN de datos. Es una práctica común separar 
+          el tráfico de voz y de administración del tráfico de datos. A veces a una VLAN de datos se la denomina VLAN 
+          de usuario. Las VLAN de datos se usan para dividir la red en grupos de usuarios o dispositivos.
+	  </p>
+	  <p id="pcolor">VLAN predeterminada</p>
+	  <p>
+	  Todos los puertos de switch se vuelven parte de la VLAN predeterminada después del arranque inicial de un switch que 
+	  carga la configuración predeterminada. Los puertos de switch que participan en la VLAN predeterminada forman parte del 
+	  mismo dominio de difusión. Esto admite cualquier dispositivo conectado a cualquier puerto de switch para comunicarse con otros dispositivos en otros puertos de switch. La VLAN predeterminada para los switches Cisco es la VLAN 1.
+	  </p>
+	  <p id="pcolor">VLAN nativa</p>
+	  <p>
+	  Una VLAN nativa está asignada a un puerto troncal 802.1Q. Los puertos de enlace troncal son los enlaces entre switches que admiten la transmisión de tráfico asociado a más de una VLAN. Los puertos de enlace troncal 802.1Q admiten 
+	  el tráfico proveniente de muchas VLAN (tráfico con etiquetas), así como el tráfico que no proviene de una VLAN (tráfico sin etiquetar). El tráfico con etiquetas hace referencia al tráfico que tiene una etiqueta de 4 bytes insertada 
+	  en el encabezado de la trama de Ethernet original, que especifica la VLAN a la que pertenece la trama. El puerto de enlace troncal 802.1Q coloca el tráfico sin etiquetar en la VLAN nativa, que es la VLAN 1 de manera predeterminada.
+	  <p id="pcolor">VLAN de administración</p>
+	  <p>
+          Una VLAN de administración es cualquier VLAN que se configura para acceder a las capacidades de administración de un switch. La VLAN 1 es la VLAN de administración de manera predeterminada. Para crear la VLAN de administración, se 
+	  asigna una dirección IP y una máscara de subred a la interfaz virtual de switch (SVI) de esa VLAN, lo que permite que el switch se administre mediante HTTP, Telnet, SSH o SNMP. Dado que en la configuración de fábrica de un switch 
+	  Cisco la VLAN 1 se establece como VLAN predeterminada, la VLAN 1 no es una elección adecuada para la VLAN de administración. 
+	  </p>
+	  <p><center><img src="img2.jpg" class="img2"></center></p>
+          <br>
+	  <b>Configuracion de una VLAN</b>
+	  <br>
+	  <p id="pcolor">1. Creación de una VLAN</p>
+	  <p>
+	  Al configurar redes VLAN de rango normal, los detalles de configuración se almacenan en la memoria flash del switch en un archivo denominado vlan.dat. La memoria flash es persistente y no requiere el comando copy running-config startup-config. 
+	  Sin embargo, debido a que en los switches Cisco se suelen configurar otros detalles al mismo tiempo que se crean las VLAN, es aconsejable guardar los cambios a la configuración en ejecución en la configuración de inicio.
+	  </p>
+	  <i>
+	  <p>Ejemplo:</p>
+	  <p>S1# configure terminal</p>
+          <p>S1(config)# vlan 20</p>
+          <p>S1(config-vlan)# name Student</p>
+	  <p>S1(config-vlan)# end</p>
+	  </i>
+	  <p id="pcolor">2. Asignar puertos a las redes VLAN</p>
+	  <p>Después de crear una VLAN, el siguiente paso es asignar puertos a la VLAN. </p>
+	  <i>
+	  <p>Ejemplo:</p>
+	  <p>Del modo de configuración global, cree la VLAN 150, nómbrela "VOZ" y vuelva al modo de configuración global.</p>
+          <P>S3(config)# vlan 150</p>
+	  <p>S3(config-vlan)# name VOICE</p>
+	  <p>S3(config-vlan)# exit</p>
+	  <p>S3(config)#</p>
+	  <p>Del modo de configuración global, introduzca la interfaz F0/18, hágala un puerto de acceso y asígnela a la VLAN 20.</p>
+	  <p>S3(config)# interface F0/18</p>
+	  <p>S3(config-if)# switchport mode access</p>
+	  <p>S3(config-if)# switchport access vlan 20</p>
+	  <p>S3(config-if)#</p>
+	  </i>
+	  <p id="pcolor">Configuración de enlaces troncales IEEE 802.1Q</p>
+	  <p>
+	  Un enlace troncal de VLAN es un enlace de capa 2 del modelo OSI entre dos switches que transporta el tráfico para todas
+	  las VLAN (a menos que se restrinja la lista de VLAN permitidas de manera manual o dinámica). Para habilitar los enlaces troncales, 
+	  configure los puertos en cualquier extremo del enlace físico con conjuntos de comandos paralelos.
+	  Para configurar un puerto de switch en un extremo de un enlace troncal, utilice el comando switchport mode trunk. Con este comando, 
+	  la interfaz cambia al modo de enlace troncal permanente. 
+	  </p>
+	  <i>
+	  <p>Ejemplo:</p>
+	  <p>s1(confió)#interfacerange fa0/1-5</p>
+	  <p>s1(config-if-range)#switchport mode trunk</p>
+	  <p>s1(config-if-range)#switchport mode trunk native vlan 99</p>
+	  <p>s1(config-if-range)#no shutdown</p>
+	  <p>s1(config-if-range)#end</p>
+	  </i>
+	  <br>
+	  <b>Casos Practicos</b>
+	  <br>
+	  <p>
+	  En la actualidad, una red física local o LAN (Local Area Network), está compuesta principalmente por computadoras y equipos de enlace 
+	  (fundamentalmente switches y routers), capaces de establecer la comunicación entre los dispositivos.
+	  En ocasiones, es necesaria la división o segmentación de la red local para facilitar su administración, y en este sentido, lo deseable 
+	  es no tener que realizar grandes cambios en la infraestructura física de la red. 
+	  </p>
+	  <p>
+	  A medida que las redes escalan (crecen), es necesario introducir múltiples dominios de difusión para segmentar el tráfico por motivos 
+	  de rendimiento, seguridad o logística.
+	  Sin el uso de las VLAN, cada segmento de la red en crecimiento, requeriría de su propia infraestructura, con uno o más routers que gestionen 
+	  la comunicación entre cada segmento; por tanto, las VLAN permiten a los administradores de red subdividir una red física en dominios de difusión separados. 
+	  </p>
+	  <p>
+	  En lo que concierne a la seguridad, hay que tener en cuenta que los dispositivos pertenecientes a una VLAN no tienen acceso a los que se encuentren en otras 
+	  y viceversa. Resulta útil cuando queremos segmentar los equipos y limitar el acceso entre ellos por temas de seguridad.
+	  Hablando de qué uso se puede dar, resulta bastante claro. Por ejemplo, separar aquellos equipos que acceden a Internet de los que no lo hacen. Esto evita que 
+	  los intrusos no lleguen a estos y que por ejemplo malware pueda distribuirse gracias a unidades de red que estarían disponibles.
+	  </p>
+	  <br>
+	  <b>Seguridad y VLAN's</b>
+	  <br>
+	  <p>Si configura una red de área local virtual (VLAN), recuerde que las VLAN comparten el ancho de banda de la red y requieren medidas de seguridad adicionales.</p>
+    	  <li>Al usar VLAN, separe los clusters sensibles de sistemas del resto de la red. De esta manera, se reduce la probabilidad de que los usuarios tengan acceso a la información almacenada en esos clientes y servidores.</li>
+    	  <li>Asigne un número de VLAN nativo único a los puertos de enlace troncal.</li>
+    	  <li>Limite las VLAN que se pueden transportar mediante un enlace troncal a las que son estrictamente necesarias.</li>
+    	  <li>Desactive el protocolo de enlace troncal (VTP) de VLAN, si es posible. De lo contrario, configure lo siguiente para el VTP: dominio de gestión, contraseña y eliminación. A continuación, defina VTP en modo transparente.</li>
+   	  <li>Utilice configuraciones de VLAN estáticas, cuando sea posible.</li>
+   	  <li>Desactive los puertos de conmutador no utilizados y asígneles un número de VLAN que no esté en uso.</li>
+	  <p id="pcolor">Private VLAN's</p>
+	  <p>VLANs privadas (PVLAN) permiten separar en una switch diferentes interfaces de una misma red que no se ven entre ellas (o si entre algunas) pero que todas si permiten ver el GW, es como aislar redes pero en una misma red. 
+	  Para ello tenemos una vlan primaria (primary) que puede ser asociada con vlans unidireccionales o secundarias (secondary). Los Hosts o dispositivos finales asociados con la vlan secundaria pueden SOLO comunicarse con la vlan 
+	  primaria (que suele ser el router o GW), pero no pueden comunicarse con otras interfaces de otras vlans secundarias. 
+	  </p>
+	  <p id="pcolor"> Asegurando VLAN Trunks</p>
+	  <p>
+	  Cuando un puerto está configurado con Dynamic Trunking Protocol (DTP) (por defecto en Cisco una interface está así configurada) y la interface está en auto puede negociar la interface para convertirse en un Trunk, por eso un 
+	  atacante que conecte un host (PC, server, etc) a una interface DTP en auto podría "negociar" con el switch para establecer un Trunk entre el host y el switch lo que se llama Switch Spoofing (engañar al switch).
+	  </p>
+	
+	 
+	</section>
+				
+
+    </body>
+</html>

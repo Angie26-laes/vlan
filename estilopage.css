@@ -1,0 +1,42 @@
+.img1{
+    border-radius:20%;	
+    width:300px;
+    height:200px;
+}
+.img2{
+    width:350px;
+    height:250px;
+}
+
+body{
+    background-image: url("img5.jpg");
+    margin-right:150px;
+    margin-left:150px;
+    font-family:"Century gothic"
+    
+}
+
+p{
+    text-align:justify;
+    line-height: 2;
+
+}
+#pcolor{
+    color:#45389e;
+    font-weight:bold;
+}
+
+li{
+    list-style-type: disc;
+    line-height: 2;
+}
+
+.ad{
+    text-align:right;
+    color:#bd7d56;
+}
+
+.add{
+    color:#bd7d56;
+}
+    
